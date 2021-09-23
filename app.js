@@ -34,8 +34,10 @@ function refSignIn(btn) {
 
 
 const manualSignUp = () => {
-    let email = document.getElementById("userName").value;
-    let password = document.getElementById("password").value;
+    userName = document.getElementById("user-name").value
+    let email = document.getElementById("user-email").value;
+    let password = document.getElementById("user-pass").value;
+    console.log(password)
     auth.createUserWithEmailAndPassword(email, password)
         .then(() => {
             document.getElementById("userName").value = "";
@@ -46,9 +48,9 @@ const manualSignUp = () => {
 
 
 const manualSignIn = () => {
-    let email = document.getElementById("userName").value;
-    let password = document.getElementById("password").value;
-    auth.signInWithEmailAndPassword(email, password)
+    let signInEmail = document.getElementById("inputEmail").value;
+    let signInPassword = document.getElementById("inputPassword").value;
+    auth.signInWithEmailAndPassword(signInEmail, signInPassword)
         .then(() => {
             document.getElementById("userName").value = "";
             document.getElementById("password").value = "";
@@ -57,8 +59,8 @@ const manualSignIn = () => {
 }
 
 
-// auth.onAuthStateChanged((user) => {
-//     if (user) {
-//         location.replace("customer.html")
-//     }
-// })
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        location.replace("customer.html")
+    }
+})
