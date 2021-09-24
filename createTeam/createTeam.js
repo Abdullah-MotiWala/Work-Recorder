@@ -2,25 +2,44 @@ auth.onAuthStateChanged((user) => {
     if (!user) {
         location.replace("/")
     }
-    else{
+    else {
         userName = user.email;
     }
 })
-const addToDrive = () =>{
+const bodyDiv = document.querySelector(".yourCompany");
+
+const addToDrive = () => {
     let companyName = prompt("Name your company");
     firestore.collection("users").doc(userName).collection("companies").doc(companyName).set({
-        admin : userName
+        admin: userName
     })
-    .then(()=>alert("Company registered"))
+        .then(() => alert("Company registered"))
 }
 
-const callData = () =>{
+const callData = () => {
+    firestore.collection("users").doc(userName).collection("companies")
+        .onSnapshot((snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+                if (change.type === "added") {
+                    creatingDiv(change.doc.id)
+                }
+            });
+        });
 
 }
-const addCompany = () =>{
-addToDrive();
-callData()
+const creatingDiv = (textCom) => {
+    const materialDiv = document.createElement("div");
+    const linkTag = document.createElement("a");
+    linkTag.setAttribute("href", "./sendingReport/sendingReport.html");
+    const companiesName = document.createTextNode(textCom);
+    linkTag.appendChild(companiesName);
+    materialDiv.appendChild(linkTag);
+    bodyDiv.appendChild(materialDiv);
 }
-const signOut = () =>{
+const addCompany = () => {
+    addToDrive();
+    callData()
+}
+const signOut = () => {
     auth.signOut();
 }
