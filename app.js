@@ -61,6 +61,6 @@ const manualSignIn = () => {
 
 auth.onAuthStateChanged((user) => {
     if (user) {
-        location.replace("customer.html")
+        location.replace("./createTeam/createTeam.html")
     }
 })
