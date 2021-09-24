@@ -8,11 +8,8 @@ auth.onAuthStateChanged((user) => {
 })
 const addToDrive = () =>{
     let companyName = prompt("Name your company");
-    firestore.collection("users").doc(userName).set({
-       [companyName] :{
-        name : companyName,
+    firestore.collection("users").doc(userName).collection("companies").doc(companyName).set({
         admin : userName
-        }
     })
     .then(()=>alert("Company registered"))
 }
