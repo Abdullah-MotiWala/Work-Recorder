@@ -1,7 +1,8 @@
 auth.onAuthStateChanged((user) => {
     if (user) {
         userName = user.email;
-        callData()
+        console.log("l")
+        changeType();
     }
     else {
         location.replace("/")
@@ -19,26 +20,25 @@ const addToDrive = () => {
 
 
 const changeType = () => {
-    firestore.collection("users")
+    firestore.collection("users").doc(userName).collection("companies")
         .onSnapshot((snapshot) => {
             snapshot.docChanges().forEach((change) => {
                 if (change.type === "added") {
                     creatingDiv(change.doc.id)
-                    console.log(docChanges.doc.data())
-                    console.log("l")
                 }
             });
         });
 }
 
-const callData = () => {
-    firestore.collection("users").doc(userName).collection("companies")
-        .onSnapshot((snapshot) => {
-            snapshot.forEach((doc) => {
-                creatingDiv(doc.id)
-            });
-        });
-}
+// const callData = () => {
+//     firestore.collection("users").doc(userName).collection("companies")
+//         .onSnapshot((snapshot) => {
+//             snapshot.forEach((doc) => {
+//                 creatingDiv(doc.id)
+//                 console.log("lamp")
+//             });
+//         });
+// }
 
 const creatingDiv = (textCom) => {
     const materialDiv = document.createElement("div");
@@ -48,10 +48,6 @@ const creatingDiv = (textCom) => {
     linkTag.appendChild(companiesName);
     materialDiv.appendChild(linkTag);
     bodyDiv.appendChild(materialDiv);
-}
-const addCompany = () => {
-    addToDrive();
-    changeType();
 }
 const signOut = () => {
     auth.signOut();
