@@ -1,7 +1,6 @@
 auth.onAuthStateChanged((user) => {
     if (user) {
         userName = user.email;
-        console.log("l")
         changeType();
     }
     else {
@@ -15,7 +14,11 @@ const addToDrive = () => {
     firestore.collection("users").doc(userName).collection("companies").doc(companyName).set({
         admin: userName
     })
-        .then(() => alert("Company registered"))
+        .then(() => {
+            alert("Company registered");
+            // changeType()
+        }
+        )
 }
 
 
