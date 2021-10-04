@@ -20,10 +20,8 @@ const addToDrive = () => {
         }
         )
     }
-    // let curCom =  e.target.innerHtml
-    // localStorage.setItem("company",curCom);
-    // console.log(curCom)
 
+    
  
 const changeType = () => {
     firestore.collection("users").doc(userName).collection("companies")
@@ -37,15 +35,21 @@ const changeType = () => {
 }
 
 const creatingDiv = (textCom) => {
-    const materialDiv = document.createElement("div");
+    materialDiv = document.createElement("div");
     materialDiv.setAttribute("class","matDiv")
-    const linkTag = document.createElement("a");
-    linkTag.setAttribute("href", "../sendingReport/sendingReport.html");
+    const linkTag = document.createElement("p");
+    linkTag.setAttribute("class", "materialDiv");
     const companiesName = document.createTextNode(textCom);
     linkTag.appendChild(companiesName);
     materialDiv.appendChild(linkTag);
     bodyDiv.appendChild(materialDiv);
+    materialDiv.addEventListener("click", function () {
+        let companyClicked = event.target.innerText;
+        localStorage.setItem("CompanyClicked", companyClicked);
+        location.href = "../sendingReport/sendingReport.html";
+      });
 }
+
 const signOut = () => {
     auth.signOut();
 }
