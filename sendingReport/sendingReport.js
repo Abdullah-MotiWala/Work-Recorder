@@ -42,7 +42,7 @@ const creatingEmp = (empName) => {
     employDiv.addEventListener("click", function () {
         let empClicked = event.target.innerText;
         localStorage.setItem("emplClicked", empClicked);
-        // location.href = "../sendingReport/sendingReport.html";
+        location.href = "../recordWork/record.html";
     });
 }
 const signOut = () => {
