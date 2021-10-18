@@ -16,7 +16,7 @@ const memberAdd = () => {
     employName = document.querySelector("#employName").value;
     firestore.collection("users").doc(userName).collection("companies").doc(companyName).collection("Employes").doc(employName).set({
     })
-        .then(document.querySelector("#employName").value == "")
+        .then(document.querySelector("#employName").value = "")
 }
 
 const changeType = () => {
@@ -42,7 +42,6 @@ const creatingEmp = (empName) => {
     employDiv.addEventListener("click", function () {
         let empClicked = event.target.innerText;
         localStorage.setItem("emplClicked", empClicked);
-        location.href = "../recordWork/record.html";
     });
 }
 const signOut = () => {

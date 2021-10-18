@@ -112,6 +112,10 @@
     cursor: pointer;
 }
 
+span.employNames{
+    height: 100vh;
+    overflow: scroll;
+}
 /* Mobile */
 
 @media screen and (max-width:500px) {
