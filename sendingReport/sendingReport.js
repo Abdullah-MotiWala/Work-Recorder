@@ -44,6 +44,16 @@ const creatingEmp = (empName) => {
         localStorage.setItem("emplClicked", empClicked);
     });
 }
+
+const btnForAdd = document.querySelector(".addBtn");
+const popUpDiv = document.querySelector(".popUp");
+const popUpCon = document.querySelector(".popUpCon");
+const popUpDis = () => {
+    popUpDiv.style.display = "flex";
+    popUpCon.style.position = "100%";
+    console.log("Pak")
+}
+btnForAdd.addEventListener("click", () => popUpDis())
 const signOut = () => {
     auth.signOut();
 }
