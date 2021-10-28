@@ -44,7 +44,7 @@ const creatingEmp = (empName) => {
         localStorage.setItem("emplClicked", empClicked);
     });
 }
-
+//PopUp for adding items
 const btnForAdd = document.querySelector(".addBtn");
 const popUpDiv = document.querySelector(".popUp");
 const popUpCon = document.querySelector(".popUpCon");
@@ -53,6 +53,15 @@ const popUpDis = () => {
     popUpCon.style.position = "100%";
     console.log("Pak")
 }
+const writingUl = document.querySelector(".itemAdd");
+const writingItems = () => {
+    const itemVal = document.createTextNode(document.querySelector(".inputItems").value);
+    const liItems = document.createElement("li");
+    liItems.appendChild(itemVal);
+    writingUl.appendChild(liItems);
+}
+const checkBtn = document.querySelector(".check");
+checkBtn.addEventListener("click", () => writingItems());
 btnForAdd.addEventListener("click", () => popUpDis())
 const signOut = () => {
     auth.signOut();
