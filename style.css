@@ -112,10 +112,46 @@
     cursor: pointer;
 }
 
-span.employNames{
+span.employNames {
     height: 100vh;
     overflow: scroll;
 }
+
+div.popUp {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+div.popUpCon {
+    background-color: #fff;
+    width: 500px;
+    height: 500px;
+    margin: 100px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    top: -100%;
+    transition: all 1s;
+}
+div.inputs>input{
+    width: 50%;
+}
+div.inputs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 /* Mobile */
 
 @media screen and (max-width:500px) {
