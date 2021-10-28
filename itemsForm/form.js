@@ -6,12 +6,13 @@ auth.onAuthStateChanged((user) => {
         location.replace("/")
     }
 })
-
+let itemArr = [];
 const itemAdd = () => {
     const item = document.querySelector(".itemName").value;
     const itemDes = document.querySelector(".itemDes").value;
-    // items.push({ itemN: [item], itemD: [itemDes] })
-    firestore.collection("users").doc(userName).set({
+    items.push({ itemN: [item], itemD: [itemDes] })
+    firestore.collection("users").doc(userName).update({
+        itemArr: firebase.firestore.FieldValue.arrayUnion("greater_virginia")
     }
     ).catch(() => "Error Occur");
     document.querySelector(".itemName").value = "";
